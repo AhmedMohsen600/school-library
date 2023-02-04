@@ -70,7 +70,7 @@ class App
 
   def add_student
     age = get_number('Age: ', 'Please enter a valid number!')
-    name = get_string('Name: ', 'Please enter a proper name!')
+    name = get_str('Name: ', 'Please enter a proper name!')
     permission = get_bool('Parent permission (y/n): ', 'Please enter either (y/n)!')
     student = Student.new(age, name, parent_permission: permission)
     return unless student
@@ -80,9 +80,9 @@ class App
   end
 
   def add_teacher
-    specialization = get_string('Specialization: ', 'Please enter a proper specialization!')
+    specialization = get_str('Specialization: ', 'Please enter a proper specialization!')
     age = get_number('Age: ', 'Please enter a valid number!')
-    name = get_string('Name: ', 'Please enter a proper name!')
+    name = get_str('Name: ', 'Please enter a proper name!')
     teacher = Teacher.new(specialization, age, name)
     return unless teacher
 
@@ -91,8 +91,8 @@ class App
   end
 
   def add_book
-    title = get_string('Title: ', 'Please enter a valid title!')
-    author = get_string('Author: ', 'Please enter a valid author!')
+    title = get_str('Title: ', 'Please enter a valid title!')
+    author = get_str('Author: ', 'Please enter a valid author!')
     book = Book.new(title, author)
     return unless book
 
@@ -192,13 +192,13 @@ class Boolean
   end
 end
 
-def get_string(param_name, error = '')
+def get_str(param_name, error = '')
   print param_name
   input = gets.chomp
 
   if input.length > 50 || input.length < 3
     puts error
-    return get_string(param_name, error)
+    return get_str(param_name, error)
   end
   input
 end
