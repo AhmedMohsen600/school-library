@@ -3,9 +3,9 @@ class Boolean
 
   def initialize(str)
     case str
-    when "y", "yes", "Yes", "Y", "YES"
+    when 'y', 'yes', 'Yes', 'Y', 'YES'
       @value = true
-    when "n", "no", "No", "N", "NO"
+    when 'n', 'no', 'No', 'N', 'NO'
       @value = false
     end
   end

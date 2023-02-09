@@ -1,13 +1,13 @@
-require_relative "person"
-require_relative "book"
-require_relative "classroom"
-require_relative "student"
-require_relative "rental"
-require_relative "teacher"
-require "date"
-require_relative "./list_service"
-require_relative "./get_service"
-require_relative "./create_service"
+require_relative 'person'
+require_relative 'book'
+require_relative 'classroom'
+require_relative 'student'
+require_relative 'rental'
+require_relative 'teacher'
+require 'date'
+require_relative './list_service'
+require_relative './get_service'
+require_relative './create_service'
 
 class App
   def initialize
@@ -21,7 +21,7 @@ class App
   def run
     loop do
       puts main_section
-      choice = @get_service.get_number("", "Please enter a valid number!")
+      choice = @get_service.get_number('', 'Please enter a valid number!')
       return if choice == 7
 
       run_available_options(choice)
@@ -31,7 +31,7 @@ class App
   private
 
   def run_available_options(choice)
-    service_class = List_service.new
+    service_class = ListService.new
     case choice
     when 1
       service_class.list_books(@books)
@@ -46,18 +46,18 @@ class App
     when 6
       service_class.list_rentals(@people)
     else
-      puts ""
+      puts ''
     end
   end
 
   def main_section
-    "Please choose an option by entering a number:
+    'Please choose an option by entering a number:
 1 - List all books
 2 - List all people
 3 - Create a person
 4 - Create a book
 5 - Create a rental
 6 - List all rentals for a given person
-7 - Exit"
+7 - Exit'
   end
 end

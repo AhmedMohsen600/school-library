@@ -1,4 +1,4 @@
-class List_service
+class ListService
   def list_books(books, with_id: false)
     if with_id
       books.each_with_index do |book, idx|
@@ -11,7 +11,7 @@ class List_service
       end
       books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
     end
-    puts ""
+    puts ''
   end
 
   def list_people(people, with_id: false)
@@ -28,7 +28,7 @@ class List_service
         puts "[#{person.class}] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
       end
     end
-    puts ""
+    puts ''
   end
 
   def list_rentals(people)
@@ -37,11 +37,11 @@ class List_service
       puts "People List is empty. Please add people in order to check their rentals\n\n"
       return
     end
-    puts "Select a person ID from the following list:"
+    puts 'Select a person ID from the following list:'
     list_people(people)
 
     person_id =
-      get_service.get_number("Person ID: ", "Please enter a valid number!")
+      get_service.get_number('Person ID: ', 'Please enter a valid number!')
     person = people.find { |current_person| current_person.id == person_id }
     if person.nil?
       puts "Person with ID: #{person_id} not found!\n\n"
