@@ -32,7 +32,7 @@ class ListService
   end
 
   def list_rentals(people)
-    get_service = Get_serivce.new
+    get_service = GetSerivce.new
     if people.empty?
       puts "People List is empty. Please add people in order to check their rentals\n\n"
       return

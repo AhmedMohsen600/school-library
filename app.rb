@@ -13,8 +13,8 @@ class App
   def initialize
     @books = []
     @people = []
-    @get_service = Get_serivce.new
-    @create_service = Create_service.new(@people, @books)
+    @get_service = GetSerivce.new
+    @create_service = CreateService.new(@people, @books)
     puts "Welcome to School Library App!\n\n"
   end
 
