@@ -10,7 +10,7 @@ class WriteService
       age: age,
       name: name,
       parent_permission: parent_permission,
-      id: id
+      id: id,
     }
     if file.size.zero?
       student_list = [student_obj]
@@ -37,7 +37,7 @@ class WriteService
       age: age,
       name: name,
       parent_permission: parent_permission,
-      id: id
+      id: id,
     }
     if file.size.zero?
       teacher_list = [teacher_obj]
@@ -67,7 +67,8 @@ class WriteService
       type: person.class,
       parent_permission:
         person.instance_of?('Teacher') ? true : person.parent_permission,
-      specialization: person.instance_of?('Teacher') ? person.specialization : ''
+      specialization:
+        person.instance_of?('Teacher') ? person.specialization : '',
     }
     if file.size.zero?
       rental_list = [rental_obj]
