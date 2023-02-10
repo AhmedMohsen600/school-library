@@ -2,10 +2,10 @@ require_relative './app'
 
 class FetchService
   def fetch_person
-    return if !File.exist?('./people.json')
+    return unless File.exist?('./people.json')
 
     person_file = File.open('./people.json')
-    if (person_file.size.zero?)
+    if person_file.empty?
       # App.new.run
       puts 'No person created!'
       # return false
@@ -15,10 +15,10 @@ class FetchService
   end
 
   def fetch_books
-    return if !File.exist?('./book.json')
+    return unless File.exist?('./book.json')
 
     book_file = File.open('./book.json')
-    if (book_file.size.zero?)
+    if book_file.empty?
       # App.new.run
       puts 'No books created!'
       # return false
@@ -28,10 +28,10 @@ class FetchService
   end
 
   def fetch_rentals
-    return if !File.exist?('./rental.json')
+    return unless File.exist?('./rental.json')
 
     rental_file = File.open('./rental.json')
-    if (rental_file.size.zero?)
+    if rental_file.empty?
       # App.new.run
       puts 'No rentals created!'
       # return false

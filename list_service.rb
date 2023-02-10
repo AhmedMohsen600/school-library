@@ -53,10 +53,8 @@ class ListService
     rentals.each do |rental|
       if !rental['name'] == person['name']
         puts "#{person['name']} didn't rent any book yet\n\n"
-      else
-        if rental['name'] == person['name']
-          puts "Date: #{rental['date']}, Book: #{rental['title']} By #{rental['author']}\n\n"
-        end
+      elsif rental['name'] == person['name']
+        puts "Date: #{rental['date']}, Book: #{rental['title']} By #{rental['author']}\n\n"
       end
     end
   end
