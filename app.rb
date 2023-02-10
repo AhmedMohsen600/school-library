@@ -8,11 +8,14 @@ require 'date'
 require_relative './list_service'
 require_relative './get_service'
 require_relative './create_service'
+require_relative './fetch_service'
 
 class App
   def initialize
+    @fetch_service = FetchService.new
     @books = []
     @people = []
+    @rentals = []
     @get_service = GetSerivce.new
     @create_service = CreateService.new(@people, @books)
     puts "Welcome to School Library App!\n\n"
@@ -23,7 +26,9 @@ class App
       puts main_section
       choice = @get_service.get_number('', 'Please enter a valid number!')
       return if choice == 7
-
+      @books = @fetch_service.fetch_books || []
+      @people = @fetch_service.fetch_person || []
+      @rentals = @fetch_service.fetch_rentals || []
       run_available_options(choice)
     end
   end
@@ -40,11 +45,11 @@ class App
     when 3
       @create_service.add_person
     when 4
-      @books << @create_service.add_book
+      @create_service.add_book
     when 5
       @create_service.add_rental(@books, @people)
     when 6
-      service_class.list_rentals(@people)
+      service_class.list_rentals(@people, @rentals)
     else
       puts ''
     end
