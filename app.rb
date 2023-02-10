@@ -26,6 +26,7 @@ class App
       puts main_section
       choice = @get_service.get_number('', 'Please enter a valid number!')
       return if choice == 7
+
       @books = @fetch_service.fetch_books || []
       @people = @fetch_service.fetch_person || []
       @rentals = @fetch_service.fetch_rentals || []

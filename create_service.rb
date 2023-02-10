@@ -16,7 +16,7 @@ class CreateService
     person_type =
       @get_service.get_number(
         'Do you want to create a Student (1) or a teacher (2)?. Back to main (any number): ',
-        'Please enter a valid number!',
+        'Please enter a valid number!'
       )
     case person_type
     when 1
@@ -34,7 +34,7 @@ class CreateService
     permission =
       @get_service.get_bool(
         'Parent permission (y/n): ',
-        'Please enter either (y/n)!',
+        'Please enter either (y/n)!'
       )
     student = Student.new(age, name, parent_permission: permission)
     @write_service.set_student(age, name, permission, student.id)
@@ -48,7 +48,7 @@ class CreateService
     specialization =
       @get_service.get_str(
         'Specialization: ',
-        'Please enter a proper specialization!',
+        'Please enter a proper specialization!'
       )
     age = @get_service.get_number('Age: ', 'Please enter a valid number!')
     name = @get_service.get_str('Name: ', 'Please enter a proper name!')
@@ -95,19 +95,19 @@ class CreateService
             Student.new(
               person_obj['age'],
               person_obj['name'],
-              parent_permission: person_obj['parent_permission'],
+              parent_permission: person_obj['parent_permission']
             )
           else
             Teacher.new(
               person_obj['specialization'],
               person_obj['age'],
-              person_obj['name'],
+              person_obj['name']
             )
           end
         )
       book_obj = books.at(book_idx)
       book = Book.new(book_obj['title'], book_obj['author'])
-      rental = Rental.new(date, book, person)
+      Rental.new(date, book, person)
       @write_service.set_rental(date, book, person)
     rescue NoMethodError
       puts "Book or person not found. Please try again!\n\n"
