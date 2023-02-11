@@ -1,6 +1,6 @@
 require 'date'
 require_relative '../book'
-require_relative '../Student'
+require_relative '../student'
 require_relative '../rental'
 
 describe Rental do
