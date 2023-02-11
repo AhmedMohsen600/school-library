@@ -34,26 +34,29 @@ class ListService
   end
 
   def list_rentals(people, rentals)
-    get_service = GetSerivce.new
-    if people.empty?
-      puts "People List is empty. Please add people in order to check their rentals\n\n"
-      return
-    end
+    return if people.empty?
+
+    person = select_person(people)
+    return if person.nil?
+
+    list_person_rentals(person, rentals)
+  end
+
+  def select_person(people)
+    get_service = GetService.new
     puts 'Select a person ID from the following list:'
     list_people(people)
+    person_id = get_service.get_number('Person ID: ', 'Please enter a valid number!')
+    people.find { |current_person| current_person['id'] == person_id }
+  end
 
-    person_id =
-      get_service.get_number('Person ID: ', 'Please enter a valid number!')
-    person = people.find { |current_person| current_person['id'] == person_id }
-    if person.nil?
-      puts "Person with ID: #{person_id} not found!\n\n"
-      return list_rentals(people)
+  def list_person_rentals(person, rentals)
+    if rentals.none? { |rental| rental['name'] == person['name'] }
+      puts "#{person['name']} didn't rent any book yet\n\n"
+      return
     end
-
     rentals.each do |rental|
-      if !rental['name'] == person['name']
-        puts "#{person['name']} didn't rent any book yet\n\n"
-      elsif rental['name'] == person['name']
+      if rental['name'] == person['name']
         puts "Date: #{rental['date']}, Book: #{rental['title']} By #{rental['author']}\n\n"
       end
     end
