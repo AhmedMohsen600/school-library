@@ -8,7 +8,6 @@ describe Rental do
   person = Student.new(25, 'belal', parent_permission: true)
   date = Date.new(2021, 02, 11)
   rental = Rental.new(date, book, person)
-  #   subject(:rental) { described_class.new(date, book, person) }
 
   it 'has a date' do
     expect(rental.date).to eq(date)
